@@ -1,0 +1,8 @@
+2023-06-26 16:08:12.375  INFO 13136 --- [main] cc.SpringbootMybatisApplicationTests     : Starting SpringbootMybatisApplicationTests using Java 1.8.0_371 on cc with PID 13136 (started by CC-butinghua in E:\java05010\codes\springboot-mybatis)
+2023-06-26 16:08:12.382 DEBUG 13136 --- [main] cc.SpringbootMybatisApplicationTests     : Running with Spring Boot v2.4.3, Spring v5.3.4
+2023-06-26 16:08:12.388  INFO 13136 --- [main] cc.SpringbootMybatisApplicationTests     : No active profile set, falling back to default profiles: default
+2023-06-26 16:08:16.715  INFO 13136 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-06-26 16:08:16.992  INFO 13136 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-06-26 16:08:17.713  INFO 13136 --- [main] cc.SpringbootMybatisApplicationTests     : Started SpringbootMybatisApplicationTests in 5.952 seconds (JVM running for 8.133)
+2023-06-26 16:08:18.380  INFO 13136 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2023-06-26 16:08:18.383  INFO 13136 --- [SpringContextShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户</title>
+    <link rel="stylesheet" href="//unpkg.com/layui@2.6.8/dist/css/layui.css">
+</head>
+<body>
+
+
+<div class="layui-container" style="position: relative;">
+<!--    <div class="layui-form" lay-filter="formDemo" th:action="@{/edit}" method="post" th:object="${user}" >-->
+        <form th:action="@{/edit}" method="post" th:object="${user}" class="layui-form" lay-filter="formDemo">
+            <input type="hidden" th:value="*{id}" name="id">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required th:value="*{name}" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="pwd" th:value="*{pwd}" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn">提交</button>
+                </div>
+            </div>
+        </form>
+
+</div>
+
+    <div class="layui-layer-msg" th:unless="${#strings.isEmpty(message)}">
+        <i class="layui-icon layui-icon-close-fill"></i>
+        <div class="layui-layer-msg-header">提示</div>
+        <div class="layui-layer-content" th:text="${message}"></div>
+    </div>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="//unpkg.com/layui@2.6.8/dist/layui.js"/>
+<script>
+    $(".message .close").on('click',function () {
+        $(this).closest(".message")
+            .transition("fade");
+    })
+</script>
+
+
+</body>
+</html>

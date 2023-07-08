@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="//unpkg.com/layui@2.6.8/dist/css/layui.css">
+</head>
+<body>
+<div class="layui-container" style="position: relative;">
+
+
+
+    <div class="layui-form-item">
+        <form th:action="@{/}" method="post">
+            <div class="layui-inline">
+                <div class="layui-input-inline">
+                    <input type="text" name="name" placeholder="请输入用户名查找" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
+            </div>
+
+            <div class="layui-inline">
+                <a th:href="@{/update}" class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">新增</a>
+    <!--            <a th:href="@{/update}" class="layui-btn layui-btn-normal" >新增</a>-->
+            </div>
+        </form>
+
+    </div>
+
+
+
+    <table class="layui-table" lay-even>
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>密码</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${page.list}">
+            <td th:text="${user.id}">James</td>
+            <td th:text="${user.name}">24</td>
+            <td th:text="${user.pwd}">Engineer</td>
+            <td>
+                <div class="layui-btn-group">
+                <a th:href="@{/edit/{id}(id=${user.id})}" class="layui-btn">编辑</a>
+                <a th:href="@{/delete/{id}(id=${user.id})}" class="layui-btn">删除</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <table class="layui-table m-mobile-wide">
+                            <colgroup>
+                                <col width="20%">
+                                <col width="30%">
+                                <col width="30%">
+                                <col width="20%">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td align="center">
+                                    <a th:href="@{/(pageNum=${page.pageNum}-1)}" class="layui-btn layui-btn-sm" th:unless="${page.isFirstPage}">上一页</a>
+                                </td>
+                                <td align="center">
+                                    第
+                                    <span th:text="${page.pageNum}">2</span>
+                                    页/共
+                                    <span th:text="${page.pages}">4</span>
+                                    页
+                                    共
+                                    <span th:text="${page.total}">29</span>
+                                    条
+                                </td>
+                                <td align="center">
+                                    <form name="pageForm" th:action="@{/}" method="get">
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" name="pageNum" placeholder="页码" style="width: 70px;" required>
+                                        </div>
+                                        <button type="submit" class="layui-btn layui-btn-normal">跳转</button>
+                                    </form>
+                                </td>
+                                <td align="center">
+                                    <a th:href="@{/(pageNum=${page.pageNum}+1)}" class="layui-btn layui-btn-sm" th:unless="${page.isLastPage}">下一页</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--<div class="layui-layer-msg" th:unless="${#strings.isEmpty(message)}">-->
+<!--    <i class="layui-icon layui-icon-close-fill"></i>-->
+<!--    <div class="layui-layer-msg-header">提示</div>-->
+<!--    <div class="layui-layer-content" th:text="${message}"></div>-->
+<!--</div>-->
+
+<div class="layui-layer-msg" th:if="${message != null}">
+    <i class="layui-icon layui-icon-close-fill"></i>
+    <div class="layui-layer-msg-header">提示</div>
+    <div class="layui-layer-content" th:text="${message}"></div>
+</div>
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="//unpkg.com/layui@2.6.8/dist/layui.js">
+<script>
+    $(".message .close").on('click',function () {
+        $(this).closest(".message")
+            .transition("fade");
+    })
+</script>
+
+
+
+</body>
+</html>
